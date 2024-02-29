@@ -1,0 +1,10 @@
+=> 
+[32m#<Event:0x00007ff304937a98[0m
+ id: [36m[1mnil[0m,
+ title: [31m[1m"[0m[31mTest[0m[31m[1m"[0m,
+ location: [31m[1m"[0m[31malso test[0m[31m[1m"[0m,
+ event_date_time: Sat, 01 Jan 2000 12:02:28.769999412 UTC +00:00,
+ created_at: [36m[1mnil[0m,
+ updated_at: [36m[1mnil[0m,
+ description: [31m[1m"[0m[31mthis is a test[0m[31m[1m"[0m,
+ user_id: [34m[1m1[0m[32m>[0m
