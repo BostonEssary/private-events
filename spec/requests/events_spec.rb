@@ -10,6 +10,15 @@ RSpec.describe "Events", type: :request do
     end
   end
 
+  describe "GET /new" do
+    it "returns http success" do
+      user = create(:user)
+      sign_in user
+      get "/events/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "POST /create" do
     it "creates an event and redirects to the event page" do
       
@@ -27,14 +36,7 @@ RSpec.describe "Events", type: :request do
     end
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      user = create(:user)
-      sign_in user
-      get "/events/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
+  
 
   describe "GET /update" do
     it "returns http success" do
