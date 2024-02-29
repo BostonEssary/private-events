@@ -1,0 +1,15 @@
+<%= form_with model: event do |form| %>
+    <%= form.label :title, "Title" %>
+    <%= form.text_field :title%>
+    <br>
+    <%= form.label :location, "Location" %>
+    <%= form.text_field :location %>
+    <br>
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description %>
+    <br>
+    <%= form.label :event_date_time, "Date and Time of the Event" %>
+    <%= form.datetime_select :event_date_time %>
+    <br>
+    <%= form.submit "Create Event"%>
+<% end %>
