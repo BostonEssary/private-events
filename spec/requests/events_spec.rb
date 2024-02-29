@@ -36,33 +36,57 @@ RSpec.describe "Events", type: :request do
     end
   end
 
-  
-
-  describe "GET /update" do
+  describe "GET events/:id/edit" do
     it "returns http success" do
       user = create(:user)
+      event = create(:event, creator_id: user.id)
       sign_in user
-      get "/events/update"
+      get "/events/#{event.id}/edit" 
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /edit" do
+  describe "PATCH events/:id" do
     it "returns http success" do
       user = create(:user)
+      event = create(:event, creator_id: user.id)
       sign_in user
-      get "/events/edit"
-      expect(response).to have_http_status(:success)
+      patch "/events/#{event.id}", :params => {
+        :event =>{
+          title: "Edited", 
+          location: "My House", 
+          description: "Party at my place",
+          event_date_time:  Time.new(2024, 6, 13, 12, 30)
+          }}    
+      expect(response).to have_http_status(:found)
+      expect(Event.find(event.id).title).to eq("Edited")
     end
   end
 
-  describe "GET /delete" do
+  describe "DELETE /events/:id" do
     it "returns http success" do
       user = create(:user)
-      
-      get "/events/delete"
+      event = create(:event, creator_id: user.id)
+      count = Event.count
+      sign_in user
+
+      delete "/events/#{event.id}"
+      expect(Event.count).to eq(count-1)
+      expect(response).to have_http_status(:found)
+    end
+  end
+
+  describe "GET /events/:id" do
+    it "returns http success" do
+      user = create(:user)
+      event = create(:event, creator_id: user.id)
+      count = Event.count
+      sign_in user
+
+      get "/events/#{event.id}"
       expect(response).to have_http_status(:success)
     end
+
   end
 
 end
