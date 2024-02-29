@@ -42,6 +42,4 @@ RSpec.describe Event, type: :model do
       expect(subject.creator.first_name).to eq("John")
     end
   end
-
-  
 end
