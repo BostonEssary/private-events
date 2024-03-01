@@ -1,14 +1,23 @@
-<div>
-    <p>
-        <%= event.title %>
-    </p>
-    <p>
-        <%= event.location %>
-    </p>
-    <p>
-        <%= event.description %>
-    </p>
-    <p>
-        <%= event.event_date_time %>
-    </p>
-</div>
+<div class="text-black my-8 bg-white w-80 h-96 rounded-3xl">
+    <div class="p-8">
+        <h3 class="text-3xl font-bold">
+            <%= event.title %>
+        </h3>
+        <p class="my-4">
+            <%= event.location %>
+        </p>
+        <p class="my-4">
+            <%= event.description %>
+        </p>
+        <p class="my-4">
+            <%= event.event_date_time %>
+        </p>
+        <p>
+            Hosted By: <%= event.creator.first_name%>
+        </p>
+        <div class="my-4 flex justify-between">   
+            <%= button_to "Info", event_path(event.id), method: :get, class: "border-2 border-green-300 rounded text-green-300 w-20 hover:bg-green-300 hover:text-white"%>
+            <%= button_to "Attend Event", attendees_path, params: {event_id: event.id} ,:method => :post, class: "border-2 border-blue-300 rounded text-blue-300 w-40 hover:bg-blue-300 hover:text-white"%>
+        </div>
+    </div>
+</div> 

@@ -1,4 +1,4 @@
-<div class="max-w-lg mx-auto dark:bg-zinc-100 text-black"> 
+<div class="max-w-lg mx-auto bg-slate-400 dark:bg-zinc-100 text-black"> 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="mx-auto p-12"> 
       <h2 class="text-3xl font-bold w-2/3 my-4">
@@ -22,7 +22,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "w-full my-4 py-2 dark:bg-green-300 hover:bg-green-400" %>
+        <%= f.submit "Log in", class: "w-full my-4 py-2 bg-green-300 hover:bg-green-400" %>
       </div>
     </div>
   <% end %>
