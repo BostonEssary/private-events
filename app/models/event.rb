@@ -5,6 +5,7 @@ class Event < ApplicationRecord
     
     validates :title, presence: true
     validates :location, presence: true
+    validates :description, presence: true
     validates :event_date_time, presence: true
     validate :event_date_time_cannot_be_in_past
 

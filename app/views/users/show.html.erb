@@ -1,8 +1,16 @@
 <h1><%= @user.first_name %></h1>
 @user.email
 
+
+<p>Future Events</p>
 <ul>
-    <% @user.attended_events.each do |event|%>
+    <% Event.where("event_date_time > ? AND creator_id = ?", Time.now, current_user.id).each do |event|%>
+        <li><%= event.title %></li>
+    <% end %>
+</ul>
+<p>Past Events</p>
+<ul>
+    <% Event.where("event_date_time < ? AND creator_id = ?", Time.now, current_user.id).each do |event|%>
         <li><%= event.title %></li>
     <% end %>
 </ul>
