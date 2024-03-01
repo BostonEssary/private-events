@@ -17,7 +17,11 @@
         </p>
         <div class="my-4 flex justify-between">   
             <%= button_to "Info", event_path(event.id), method: :get, class: "border-2 border-green-300 rounded text-green-300 w-20 hover:bg-green-300 hover:text-white"%>
-            <%= button_to "Attend Event", attendees_path, params: {event_id: event.id} ,:method => :post, class: "border-2 border-blue-300 rounded text-blue-300 w-40 hover:bg-blue-300 hover:text-white"%>
+            <% if event.attenders.find_by(id: current_user.id)%>
+                <%= button_to "Unattend", attendee_path(Attendee.where(user_id: current_user.id, event_id: event.id).first.id), :method => :delete, class: "border-2 border-red-300 rounded text-red-300 w-40 hover:bg-red-300 hover:text-white"%>
+            <% else %>
+                <%= button_to "Attend Event", attendees_path, params: {event_id: event.id} ,:method => :post, class: "border-2 border-blue-300 rounded text-blue-300 w-40 hover:bg-blue-300 hover:text-white"%>
+            <% end %>
         </div>
     </div>
 </div> 
