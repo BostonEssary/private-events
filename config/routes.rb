@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendees/create'
+  get 'attendees/new'
 
   devise_for :users
  
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :events
   resources :users, only: [:show]
+  resources :attendees, only: [:create]
 end
