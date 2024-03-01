@@ -35,8 +35,14 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to events_path
+    if @event.creator_id == current_user.id
+      @event.destroy
+      redirect_to events_path
+    else
+      flash.now[:error] = "Can't delete an event you did not create"
+      render @event, status: :unprocessable_entity
+    end
+    
   end
 
   private

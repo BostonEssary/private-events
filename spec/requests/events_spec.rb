@@ -64,7 +64,7 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "DELETE /events/:id" do
-    it "returns http success" do
+    it "returns http success when the current user is the creator" do
       user = create(:user)
       event = create(:event, creator_id: user.id)
       count = Event.count
@@ -73,6 +73,18 @@ RSpec.describe "Events", type: :request do
       delete "/events/#{event.id}"
       expect(Event.count).to eq(count-1)
       expect(response).to have_http_status(:found)
+    end
+
+    it "fails the current user is NOT the creator" do
+      user = create(:user)
+      event = create(:event, creator_id: user.id)
+      other_user = create(:user, email: "otheremail@email.com")
+      count = Event.count
+      sign_in other_user
+
+      delete "/events/#{event.id}"
+      expect(Event.count).to eq(count)
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 
