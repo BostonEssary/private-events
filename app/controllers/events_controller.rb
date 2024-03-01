@@ -31,6 +31,11 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    if @event.creator_id == current_user.id
+      render "edit"
+    else
+      render "access_denied"
+    end
   end
 
   def destroy

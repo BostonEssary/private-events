@@ -9,8 +9,8 @@ class Event < ApplicationRecord
     validates :event_date_time, presence: true
     validate :event_date_time_cannot_be_in_past
 
-
-    
+    scope :past, -> { where("event_date_time < ?", Time.now)}
+    scope :future, -> { where("event_date_time > ?", Time.now)}
     private
 
     def event_date_time_cannot_be_in_past
