@@ -1,11 +1,48 @@
-<h2>
-    <%= @event.title %>
-</h2>
+<div class="text-black bg-slate-400 dark:bg-zinc-100 m-2">   
+    <div class="p-4">
+        <h2 class="text-2xl font-bold">
+            <%= @event.title %>
+        </h2>
 
-<ul>
-    <% @event.attenders.each do |attender|%>
-        <li><%= attender.first_name %></li>
-    <% end %>
-</ul>
+        <div class="description my-4 ">
+            <h3 class="text-xl font-semibold">
+            Description
+            </h3>
+            <p> <%= @event.description%></p>
+        </div>
 
-<%= render partial: "join" %>
+        <div class="location my-4 ">
+            <h3 class="text-xl font-semibold">
+            Location
+            </h3>
+            <p> <%= @event.location%></p>
+        </div>
+        
+        <div class="time my-4 ">
+            <h3 class="text-xl font-semibold">
+            Time
+            </h3>
+            <p> <%= @event.event_date_time.strftime("%m/%d/%Y @ %I:%M%P")%></p>
+        </div>
+        <div class="attendees my-4 ">
+            <h3 class="text-xl font-semibold">
+            Attendees
+            </h3>
+            <ul>
+            <% @event.attenders.each do |attender|%>
+                <li><%= attender.first_name %></li>
+            <% end %>
+        </ul>
+        </div>
+
+        <div class="creator my-4 ">
+            <h3 class="text-xl font-semibold">
+            Created By
+            </h3>
+            <p><%= @event.creator.first_name%></p>
+        </div>
+        
+
+    <%= render partial: "join" %>
+    </div>
+</div>

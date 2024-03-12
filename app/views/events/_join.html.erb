@@ -1,6 +1,7 @@
-<%= button_to "Attend Event", attendees_path, params: {event_id: @event.id} ,:method => :post%>
+<div class="flex ">
+    <%= button_to "Attend Event", attendees_path, params: {event_id: @event.id} ,:method => :post, class: "bg-green-300 p-2 mr-2"%>
 
-<% if @event.creator_id == current_user.id %>
-    <%= button_to "Delete Event", event_path(@event.id), :method => :delete%>
-<% end %>
-
+    <% if @event.creator_id == current_user.id %>
+        <%= button_to "Delete Event", event_path(@event.id), :method => :delete, class: "bg-red-300 p-2"%>
+    <% end %>
+</div>

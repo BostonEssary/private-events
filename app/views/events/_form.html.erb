@@ -1,18 +1,36 @@
-
-
-
-<%= form_with model: event do |form| %>
-    <%= form.label :title, "Title" %>
-    <%= form.text_field :title%>
-    <br>
-    <%= form.label :location, "Location" %>
-    <%= form.text_field :location %>
-    <br>
-    <%= form.label :description, "Description" %>
-    <%= form.text_area :description %>
-    <br>
-    <%= form.label :event_date_time, "Date and Time of the Event" %>
-    <%= form.datetime_select :event_date_time %>
-    <br>
-    <%= form.submit "Create Event"%>
-<% end %>
+<div class="max-w-lg mx-auto bg-slate-400 dark:bg-zinc-100 text-black">
+    
+    <%= form_with model: event do |form| %>
+        <div class="fields p-4">
+            <h2 class="text-2xl font-bold">Create a new Event!</h2>
+            <br>
+            <div class="field ">
+                <%= form.label :title, "Title" %>
+                <br>
+                <%= form.text_field :title%>
+            </div>
+            <br>
+            <div class="field ">
+                <%= form.label :location, "Location" %>
+                <br>
+                <%= form.text_field :location, class:  %>
+            </div>
+            <br>
+            <div class="field "> 
+                <%= form.label :description, "Description" %>
+                <br>
+                <%= form.text_area :description %>
+            </div>
+            <br>
+            <div>
+                <%= form.label :event_date_time, "Date and Time of the Event" %>
+                <br>
+                <%= form.datetime_select :event_date_time %>
+            </div>
+            <br>
+            <%= form.submit "Create Event", class: "bg-green-300 p-2"%>
+        </div>
+        
+        
+    <% end %>
+</div>
