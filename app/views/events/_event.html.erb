@@ -1,3 +1,9 @@
+<% if @attendee.errors.any? %>
+    <% @attendee.errors.full_messages.each do |message|%>
+        <%= message %>
+    <% end %>
+<% end %>
+
 <div class="text-black my-8 bg-white w-80 h-96 rounded-3xl">
     <div class="p-8">
         <h3 class="text-3xl font-bold">
