@@ -11,11 +11,18 @@ class Event < ApplicationRecord
 
     scope :past, -> { where("event_date_time < ?", Time.now)}
     scope :future, -> { where("event_date_time > ?", Time.now)}
+
+    after_create :add_creator_to_attenders
+
     private
 
     def event_date_time_cannot_be_in_past
         if event_date_time.present? and event_date_time < Time.now
             errors.add(:event_date_time, "Event can not be in the past")
         end
+    end
+
+    def add_creator_to_attenders
+        Attendee.create(user_id: creator.id, event_id: id)
     end
 end
