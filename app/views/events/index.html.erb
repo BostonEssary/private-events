@@ -1,6 +1,8 @@
-<%= turbo_frame_tag "new_event" do %>
-    <%= link_to "Create New Event", new_event_path, class:" text-black" %>
-<% end %>
+<div class="mx-auto w-fit">
+    <%= turbo_frame_tag "new_event" do %>
+        <%= link_to "Create New Event", new_event_path, class:" text-black  bg-green-300 p-2" %>
+    <% end %>
+</div>
 
 <div class="  mx-auto w-fit m-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10" >
     <% @events.each do |event|%>
