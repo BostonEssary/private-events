@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
     belongs_to :creator, class_name: "User"
-    has_many :attendees
+    has_many :attendees, dependent: :delete_all
     has_many :attenders, :through => :attendees, :source => "user", dependent: :destroy
     
     validates :title, presence: true

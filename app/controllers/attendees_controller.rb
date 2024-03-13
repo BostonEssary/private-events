@@ -9,8 +9,12 @@ class AttendeesController < ApplicationController
 
   def destroy
     @attendee = Attendee.find(params[:id])
-    @attendee.destroy
-    redirect_to events_path
+    if @attendee.destroy
+      redirect_to events_path
+    else
+      flash[:error] = "There was an error"
+      redirect_to events_path
+    end
   end
   
 end
