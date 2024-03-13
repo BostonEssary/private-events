@@ -20,7 +20,7 @@
             When? <%= event.event_date_time.strftime("%m/%d/%Y @ %I:%M%P") %>
         </p>
         <p>
-            Hosted By: <%= event.creator.first_name%>
+            Hosted By: <%= link_to event.creator.first_name, user_path(event.creator.id), class: "hover:text-sky-300"%>
         </p>
         <div class="my-2">
             <% if event.attenders.find_by(id: current_user.id) %>
