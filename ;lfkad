@@ -1,0 +1,19 @@
+=> 
+[[32m#<Event:0x00007f26786bd6e0[0m
+  id: [34m[1m2[0m,
+  title: [31m[1m"[0m[31mMy Event[0m[31m[1m"[0m,
+  location: [31m[1m"[0m[31mMy House[0m[31m[1m"[0m,
+  created_at: Thu, 29 Feb 2024 13:04:19.415996000 CST -06:00,
+  updated_at: Thu, 29 Feb 2024 13:04:19.415996000 CST -06:00,
+  description: [31m[1m"[0m[31mParty at my place[0m[31m[1m"[0m,
+  creator_id: [34m[1m1[0m,
+  event_date_time: Thu, 13 Jun 2024 14:30:00.000000000 CDT -05:00[32m>[0m,
+ [32m#<Event:0x00007f2676754ec0[0m
+  id: [34m[1m10[0m,
+  title: [31m[1m"[0m[31masfdasfasdf[0m[31m[1m"[0m,
+  location: [31m[1m"[0m[31masdfasdfasdfasdfas[0m[31m[1m"[0m,
+  created_at: Wed, 13 Mar 2024 13:55:34.833618000 CDT -05:00,
+  updated_at: Wed, 13 Mar 2024 13:55:34.833618000 CDT -05:00,
+  description: [31m[1m"[0m[31masfasfasdfasdfads[0m[31m[1m"[0m,
+  creator_id: [34m[1m2[0m,
+  event_date_time: Thu, 28 Mar 2024 13:55:00.000000000 CDT -05:00[32m>[0m]

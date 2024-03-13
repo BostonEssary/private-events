@@ -22,8 +22,15 @@
         <p>
             Hosted By: <%= event.creator.first_name%>
         </p>
-        <div class="my-4 flex justify-between">   
-            <%= button_to "Info", event_path(event.id), method: :get, class: "border-2 border-green-300 rounded text-green-300 w-20 hover:bg-green-300 hover:text-white"%>
+        <div class="my-2">
+            <% if event.attenders.find_by(id: current_user.id) %>
+                <p> You are attending this event! </p>
+            <% else %>
+                <p> You are not attending this event. Click <span class="text-green-300">info</span> to find out more!</p>
+            <% end %>
+        </div>
+        <div class="my-4 w-full">   
+            <%= button_to "Info", event_path(event.id), method: :get, class: "border-2 border-green-300 rounded text-green-300 w-full hover:bg-green-300 hover:text-white mb-2"%>
         </div>
     </div>
 </div> 

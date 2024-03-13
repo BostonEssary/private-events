@@ -11,6 +11,7 @@ class Event < ApplicationRecord
 
     scope :past, -> { where("event_date_time < ?", Time.now)}
     scope :future, -> { where("event_date_time > ?", Time.now)}
+    
 
     after_create :add_creator_to_attenders
 
