@@ -1,7 +1,10 @@
-<div class="flex ">
-    <%= button_to "Attend Event", attendees_path, params: {event_id: @event.id} ,:method => :post, class: "bg-green-300 p-2 mr-2"%>
 
-    <% if @event.creator_id == current_user.id %>
-        <%= button_to "Delete Event", event_path(@event.id), :method => :delete, class: "bg-red-300 p-2"%>
-    <% end %>
+<div class="flex ">
+    <div class="my-4 flex justify-between">   
+            <% if event.attenders.find_by(id: current_user.id)%>
+                <%= button_to "Unattend", attendee_path(Attendee.where(user_id: current_user.id, event_id: event.id).first.id), :method => :delete, class: "border-2 border-red-300 rounded text-red-300 w-40 hover:bg-red-300 hover:text-white"%>
+            <% else %>
+                <%= button_to "Attend Event", attendees_path, params: {event_id: event.id} ,:method => :post, class: "border-2 border-blue-300 rounded text-blue-300 w-40 hover:bg-blue-300 hover:text-white"%>
+            <% end %>
+        </div>
 </div>

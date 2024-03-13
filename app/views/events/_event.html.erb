@@ -4,30 +4,26 @@
     <% end %>
 <% end %>
 
-<div class="text-black my-8 bg-white w-80 h-96 rounded-3xl">
-    <div class="p-8">
-        <h3 class="text-3xl font-bold">
+<div class="text-black my-8 bg-white w-80 h-fit rounded-3xl">
+    <%= image_tag("card-default.jpg", class: "rounded w-72 mx-auto my-0 mt-4")%>
+    <div class="px-8">
+        <h3 class="text-2xl font-bold">
             <%= event.title %>
         </h3>
-        <p class="my-4">
-            <%= event.location %>
+        <p class="my-2">
+            Where? <%= event.location %>
         </p>
-        <p class="my-4">
-            <%= event.description %>
+        <p class="my-2">
+           What? <%= event.description %>
         </p>
-        <p class="my-4">
-            <%= event.event_date_time %>
+        <p class="my-2">
+            When? <%= event.event_date_time.strftime("%m/%d/%Y @ %I:%M%P") %>
         </p>
         <p>
             Hosted By: <%= event.creator.first_name%>
         </p>
         <div class="my-4 flex justify-between">   
             <%= button_to "Info", event_path(event.id), method: :get, class: "border-2 border-green-300 rounded text-green-300 w-20 hover:bg-green-300 hover:text-white"%>
-            <% if event.attenders.find_by(id: current_user.id)%>
-                <%= button_to "Unattend", attendee_path(Attendee.where(user_id: current_user.id, event_id: event.id).first.id), :method => :delete, class: "border-2 border-red-300 rounded text-red-300 w-40 hover:bg-red-300 hover:text-white"%>
-            <% else %>
-                <%= button_to "Attend Event", attendees_path, params: {event_id: event.id} ,:method => :post, class: "border-2 border-blue-300 rounded text-blue-300 w-40 hover:bg-blue-300 hover:text-white"%>
-            <% end %>
         </div>
     </div>
 </div> 
