@@ -1,7 +1,13 @@
-<nav>
-    <% if user_signed_in? %>
-        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-rose-500 dark:bg-yellow-500 w-20"%>
-    <% else %>
-        <%= button_to "Login", new_user_session_path, method: :get, class: "bg-green-300 dark:bg-orange-200 w-20"%>
-    <% end %>
+<nav class=" h-12 bg-white mb-12">
+        <div class="mx-4 h-full flex justify-between items-center my-auto">
+            <% if user_signed_in? %>
+                <div class="text-black m-width-1/4">
+                    <%= link_to "Home", root_path%>
+                    <%= link_to "Profile", user_path(current_user.id)%>
+                </div>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-rose-500 dark:bg-yellow-500 w-20"%>
+            <% else %>
+                <%= button_to "Login", new_user_session_path, method: :get, class: "bg-green-300 dark:bg-orange-200 w-20 ml-auto"%>
+            <% end %>
+        </div>
 </nav>
