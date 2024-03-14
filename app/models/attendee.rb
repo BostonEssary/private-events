@@ -5,6 +5,7 @@ class Attendee < ApplicationRecord
     before_destroy :check_if_user_is_creator
     validates_uniqueness_of :user_id, :scope => :event_id
 
+
     private
 
     def check_if_user_is_creator

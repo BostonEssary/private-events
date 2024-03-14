@@ -15,6 +15,8 @@ class Event < ApplicationRecord
 
     after_create :add_creator_to_attenders
 
+
+    
     private
 
     def event_date_time_cannot_be_in_past

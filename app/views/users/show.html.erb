@@ -1,16 +1,30 @@
-<h1><%= @user.first_name %></h1>
-@user.email
+<div class="bg-white text-black">
+    <div class="p-4">
+        <div class="flex items-center">
+            <%= image_tag "default-avatar.jpg", size: "75", class: "rounded-full mr-4 border-2 border-black" %>
+            <div>
+                <h1 class="text-xl font-bold"><%= @user.first_name %> <%= @user.last_name%></h1>
+                <p>Created Events: <%=current_user.created_events_count%></p>
+            </div>
+        </div>
+        
 
 
-<p>Future Events</p>
-<ul>
-    <% Event.where("event_date_time > ? AND creator_id = ?", Time.now, current_user.id).each do |event|%>
-        <li><%= event.title %></li>
-    <% end %>
-</ul>
-<p>Past Events</p>
-<ul>
-    <% Event.where("event_date_time < ? AND creator_id = ?", Time.now, current_user.id).each do |event|%>
-        <li><%= event.title %></li>
-    <% end %>
-</ul>
+        <div class="m-4 bg-slate-400 p-4">
+            <h2 class="text-lg font-semibold">Future Events</h2>
+            <div class="mx-auto w-fit m-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                <% @user.attended_events.future.each do |event|%>
+                    <%= render partial: "events/event", locals: {event: event}%>
+                <% end %>
+            </div>
+                
+            <h2 class="text-lg font-semibold">Past Events</h2>
+            <ul>
+                <% @user.attended_events.past.each do |event|%>
+                    <%= render partial: "events/event", locals: {event: event}%>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -7,4 +7,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  
+  def created_events_count
+    return Event.where("creator_id = ?", self.id).size
+  end
+
+
+
 end
