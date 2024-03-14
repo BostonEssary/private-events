@@ -51,5 +51,8 @@
         
 
     <%= render partial: "join",  locals: {event: @event}%>
+    <% if @event.creator_id == current_user.id%>
+        <%= button_to "Delete Event", event_path(@event.id), method: :delete, class: "bg-red-500 text-white rounded w-40"  %>
+    <% end %>
     </div>
 </div>
