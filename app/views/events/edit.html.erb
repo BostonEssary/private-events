@@ -1,1 +1,4 @@
-<%= render partial: "form", locals: {event: @event}%>
+<%= turbo_frame_tag @event do %>
+    <%= render partial: "form", locals: {event: @event}%>
+    
+<% end %>

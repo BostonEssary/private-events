@@ -1,58 +1,62 @@
-
-
-<div class="text-black bg-slate-400 dark:bg-zinc-100 m-2">
-    <div class="">
-        <% if flash[:error] %>
-            <p class=" bg-red-200 w-96 mx-auto p-6 text-red-600"><%= flash[:error] %></p>
-        <% end %>
-    </div>
-    <div class="p-4">
-        <h2 class="text-2xl font-bold">
-            <%= @event.title %>
-        </h2>
-
-        <div class="description my-4 ">
-            <h3 class="text-xl font-semibold">
-            Description
-            </h3>
-            <p> <%= @event.description%></p>
-        </div>
-
-        <div class="location my-4 ">
-            <h3 class="text-xl font-semibold">
-            Location
-            </h3>
-            <p> <%= @event.location%></p>
-        </div>
-        
-        <div class="time my-4 ">
-            <h3 class="text-xl font-semibold">
-            Time
-            </h3>
-            <p> <%= @event.event_date_time.strftime("%m/%d/%Y @ %I:%M%P")%></p>
-        </div>
-        <div class="attendees my-4 ">
-            <h3 class="text-xl font-semibold">
-            Attendees
-            </h3>
-            <ul>
-            <% @event.attenders.each do |attender|%>
-                <li><%= attender.first_name %></li>
+<%= turbo_frame_tag @event do %>
+    <div class="text-black bg-slate-400 dark:bg-zinc-100 m-2">
+        <div class="">
+            <% if flash[:error] %>
+                <p class=" bg-red-200 w-96 mx-auto p-6 text-red-600"><%= flash[:error] %></p>
             <% end %>
-        </ul>
         </div>
+        <div class="p-4">
+            <h2 class="text-2xl font-bold">
+                <%= @event.title %>
+            </h2>
 
-        <div class="creator my-4 ">
-            <h3 class="text-xl font-semibold">
-            Created By
-            </h3>
-            <p><%= @event.creator.first_name%></p>
+            <div class="description my-4 ">
+                <h3 class="text-xl font-semibold">
+                Description
+                </h3>
+                <p> <%= @event.description%></p>
+            </div>
+
+            <div class="location my-4 ">
+                <h3 class="text-xl font-semibold">
+                Location
+                </h3>
+                <p> <%= @event.location%></p>
+            </div>
+            
+            <div class="time my-4 ">
+                <h3 class="text-xl font-semibold">
+                Time
+                </h3>
+                <p> <%= @event.event_date_time.strftime("%m/%d/%Y @ %I:%M%P")%></p>
+            </div>
+            <div class="attendees my-4 ">
+                <h3 class="text-xl font-semibold">
+                Attendees
+                </h3>
+                <ul>
+                <% @event.attenders.each do |attender|%>
+                    <li><%= attender.first_name %></li>
+                <% end %>
+            </ul>
+            </div>
+
+            <div class="creator my-4 ">
+                <h3 class="text-xl font-semibold">
+                Created By
+                </h3>
+                <p><%= @event.creator.first_name%></p>
+            </div>
+            
+
+        <%= render partial: "join",  locals: {event: @event}%>
+        <% if @event.creator_id == current_user.id%>
+            <div class= "flex">
+                <%= button_to "Edit Event", edit_event_path(@event), method: :get, class: "bg-yellow-300 w-40 mr-4" %>
+                <%= button_to "Delete Event", event_path(@event.id), method: :delete, class: "bg-red-500 text-white rounded w-40"  %>
+            </div>
+        <% end %>
         </div>
-        
-
-    <%= render partial: "join",  locals: {event: @event}%>
-    <% if @event.creator_id == current_user.id%>
-        <%= button_to "Delete Event", event_path(@event.id), method: :delete, class: "bg-red-500 text-white rounded w-40"  %>
-    <% end %>
     </div>
-</div>
+    
+<% end %>

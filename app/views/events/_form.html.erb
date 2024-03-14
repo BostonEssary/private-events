@@ -29,8 +29,10 @@
             </div>
             <br>
             <%= form.submit "Create Event", class: "bg-green-300 p-2"%>
+            <% if controller.action_name == "edit" %>
+                <%= link_to "Return", event_path(@event), class: "text-black bg-yellow-300 p-2" %>
+            <% end %>
         </div>
-        
-        
+    
     <% end %>
 </div>
