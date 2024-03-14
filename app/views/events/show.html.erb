@@ -53,7 +53,7 @@
         <% if @event.creator_id == current_user.id%>
             <div class= "flex">
                 <%= button_to "Edit Event", edit_event_path(@event), method: :get, class: "bg-yellow-300 w-40 mr-4" %>
-                <%= button_to "Delete Event", event_path(@event.id), method: :delete, class: "bg-red-500 text-white rounded w-40"  %>
+                <%= button_to "Delete Event", event_path(@event.id), method: :delete, class: "bg-red-500 text-white rounded w-40", data: { turbo_frame: "_top" }  %>
             </div>
         <% end %>
         </div>
